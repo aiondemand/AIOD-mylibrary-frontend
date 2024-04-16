@@ -1,132 +1,740 @@
-<div *ngIf="asset">
-    <mat-toolbar class="mb-3 marketplace-toolbar">
+<div *ngIf="asset" class="asset-detail">
+    <!-- <mat-toolbar class="mb-3 marketplace-toolbar">
         <span>{{ asset.category| titlecase }}
             <mat-icon>{{icon}}</mat-icon></span>
-    </mat-toolbar>
+    </mat-toolbar> -->
 
-    <div class="asset-header">
-        <div class="paths"><xng-breadcrumb class="mb-3"></xng-breadcrumb></div>
-        <div>
+   <!-- <div class="asset-header"> -->
+        <!-- <div class="paths"><xng-breadcrumb class="mb-3"></xng-breadcrumb></div> -->
+        <!-- <div>
             <button mat-fab color="accent" aria-label="Add stash" matTooltip="Add stash"
                 (click)="addItemCart()">
                 <mat-icon>add_to_photos</mat-icon>
             </button>
-        </div>
-
-    </div>
+        </div> -->
+    <!-- </div> -->
     <div class="asset-content">
-        <mat-divider></mat-divider>
         <ng-container *ngTemplateOutlet="assetTitle"></ng-container>
-        <mat-divider></mat-divider>
         <ng-container *ngTemplateOutlet="assetBody"></ng-container>
-        <mat-divider></mat-divider>
 
     </div>
 </div>
 
 <ng-template #assetBody>
-    <div class="asset-body">
-        <div class="asset-body-container">
-            <div class="asset-body-description">
-                <h3>{{ 'ASSETS.ASSET-DETAIL.DESCRIPTION' | translate }}</h3>
-                <markdown>
-                    {{ asset.description }}
-                </markdown>
-            </div>
+   <div class="asset-body">
+      <div class="asset-body-container">
+         <div class="asset-body-description">
+            <!-- <h3>{{ 'ASSETS.ASSET-DETAIL.DESCRIPTION' | translate }}</h3> -->
+            <markdown>
+               {{ asset.description }}
+            </markdown>
+         </div>
 
-            <div *ngIf="asset.media && asset.media.length > 0">
-                <h3>{{ 'ASSETS.MEDIA.TITLE' | translate }}</h3>
-                <div class="media-container" >
-                    <div *ngFor="let media of asset.media">
+         <div class="asset-card-data">
+            <span>Type of Data: Image</span>
+            <span>Size of Data: 25mb</span>
+            <span class="d-block" *ngIf="!!asset.sameAs">
+               Same as: 
+               <a [href]="asset.sameAs" target="_blank">
+                  {{ asset.sameAs }}
+               </a>
+            </span>
+         </div>
+         <div class="title-dates"> 
+            <span>
+               {{'ASSETS.ASSET-DETAIL.DATE_PUBLISHED' | translate }} : {{asset.date_published | date: 'mediumDate'}} 
+            </span> 
+            <span *ngIf="asset.dateCreated">
+               {{'ASSETS.ASSET-DETAIL.DATA_CREATED' | translate }} : {{asset.dateCreated | date: 'mediumDate'}}
+            </span>
+            <br>
+            <span class="title-alternames" *ngFor="let name of asset.alternateName">{{ name }}</span>
+         </div>
+
+         <div class="asset-card-info">
+            <div class="asset-card-info-content">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+               <span>1029</span>
+            </div>
+            <div class="asset-card-info-content">
+               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>   
+               <span>1029</span>
+            </div>
+            <div class="asset-card-info-content">
+               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+               <span>1029</span>
+            </div>
+            <div class="asset-card-info-content">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+               <span>9500</span>
+            </div>
+         </div>
+      </div>
+      <div class="asset-body-right-column">
+         <img class="asset-card-image" src="../assets/images/cards-image.jpeg" alt="">
+      </div>
+   </div>
+   <div class="asset-body asset-body-tabs">
+      <div class="asset-body-container">
+         <mat-tab-group animationDuration="0ms" class="tab-group">
+            <mat-tab label="Details">
+               <div class="mr-100">
+               <!-- <div *ngIf="asset.media && asset.media.length > 0" class="mb-50">
+                  <h3>{{ 'ASSETS.MEDIA.TITLE' | translate }}</h3>
+                  <div class="media-container" >
+                     <div *ngFor="let media of asset.media">
                         <app-media [media]="media"></app-media>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="asset-body-category" [ngSwitch]="asset.category">
-                <div *ngSwitchCase="AssetCategory.Dataset"><app-dataset [identifier]="asset.identifier"></app-dataset>
-                </div>
-                <div *ngSwitchCase="AssetCategory.Service"><app-service-component
-                        [identifier]="asset.identifier"></app-service-component></div>
-                <div *ngSwitchCase="AssetCategory.Experiment"><app-experiment
-                        [identifier]="asset.identifier"></app-experiment></div>
-                <div *ngSwitchCase="AssetCategory.AIModel"><app-aimodel [identifier]="asset.identifier"></app-aimodel>
-                </div>
-            </div>
-
-            <div *ngIf="!!asset.license">
-                <h3>{{ 'ASSETS.ASSET-DETAIL.LICENSE' | translate }}</h3>
-                <div class="field-container">
-                    <a *ngIf="isURL(asset.license)" [href]="asset.license" target="_blank">
+                     </div>
+                  </div>
+               </div>
+              
+               <div class="asset-body-category mb-50" [ngSwitch]="asset.category">
+                     <div *ngSwitchCase="AssetCategory.Dataset"><app-dataset [identifier]="asset.identifier"></app-dataset>
+                     </div>
+                     <div *ngSwitchCase="AssetCategory.Service"><app-service-component
+                           [identifier]="asset.identifier"></app-service-component></div>
+                     <div *ngSwitchCase="AssetCategory.Experiment"><app-experiment
+                           [identifier]="asset.identifier"></app-experiment></div>
+                     <div *ngSwitchCase="AssetCategory.AIModel"><app-aimodel [identifier]="asset.identifier"></app-aimodel>
+                     </div>
+               </div>
+       -->
+                
+               <!-- <div *ngIf="!!asset.license" class="mb-50">
+                  <h3>{{ 'ASSETS.ASSET-DETAIL.LICENSE' | translate }}</h3>
+                  <div class="field-container">
+                     <a *ngIf="isURL(asset.license)" [href]="asset.license" target="_blank">
                         {{ asset.license }} <mat-icon>open_in_new</mat-icon>
-                    </a>
-                    <span *ngIf="!isURL(asset.license)"> {{ asset.license }}</span>
-                </div>
-            </div>
-
-            <div *ngIf="!!asset.sameAs">
-                <h3>{{ 'ASSETS.ASSET-DETAIL.SAMEAS' | translate }}</h3>
-                <div class="field-container">
-                    <a [href]="asset.sameAs" target="_blank">
-                        {{ asset.sameAs }} <mat-icon>open_in_new</mat-icon>
-                    </a>
-                </div>
-            </div>
-
-            <div *ngIf="asset.citation && asset.citation.length > 0">
-                <h3>{{ 'ASSETS.ASSET-DETAIL.CITATION' | translate }}</h3>
-                <div class="field-container">
-                    <p *ngFor="let url of asset.citation">
+                     </a>
+                     <span *ngIf="!isURL(asset.license)"> {{ asset.license }}</span>
+                  </div>
+               </div>
+      
+           -->
+      
+               <!-- <div *ngIf="asset.citation && asset.citation.length > 0" class="mb-50">
+                  <h3>{{ 'ASSETS.ASSET-DETAIL.CITATION' | translate }}</h3>
+                  <div class="field-container">
+                     <p *ngFor="let url of asset.citation">
                         <a href="#" target="_blank" rel="noopener noreferrer">
-                            {{ url }} <mat-icon>open_in_new</mat-icon>
+                              {{ url }} <mat-icon>open_in_new</mat-icon>
                         </a>
-                    </p>
-                </div>
-            </div>
-
-            <div *ngIf="!!asset.distributions && asset.distributions.length>0">
-                <h3>{{ 'ASSETS.DISTRIBUTION.TITLE' | translate }}</h3>
-                <div class="distribution-container">
-                    <ng-container *ngFor="let distribution of asset.distributions">
+                     </p>
+                  </div>
+               </div>
+      
+               <div *ngIf="!!asset.distributions && asset.distributions.length>0" class="mb-50">
+                  <h3>{{ 'ASSETS.DISTRIBUTION.TITLE' | translate }}</h3>
+                  <div class="distribution-container">
+                     <ng-container *ngFor="let distribution of asset.distributions">
                         <ng-container [ngTemplateOutlet]="distributionDetail"
-                            [ngTemplateOutletContext]="{distribution: distribution }">
+                              [ngTemplateOutletContext]="{distribution: distribution }">
                         </ng-container>
-                    </ng-container>
-                </div>
+                     </ng-container>
+                  </div>
+               </div> -->
+                  <div class="mb-50">
+                     <h3>Data Sheet</h3>
+                     <div class="asset-body-links">
+                        <a href="#" class="btn btn-underline">
+                           Link01
+                           <svg class="arrow-up-right" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.25 12.75L12.75 5.25" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.25 5.25H12.75V12.75" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                           </svg>
+                        </a>    
+                        <a href="#" class="btn btn-underline">
+                           Link02
+                           <svg class="arrow-up-right" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.25 12.75L12.75 5.25" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.25 5.25H12.75V12.75" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                           </svg>
+                        </a>    
+                        <a href="#" class="btn btn-underline">
+                           Link03
+                           <svg class="arrow-up-right" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.25 12.75L12.75 5.25" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.25 5.25H12.75V12.75" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                           </svg>
+                        </a>    
+                        <a href="#" class="btn btn-underline">
+                           Link04
+                           <svg class="arrow-up-right" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.25 12.75L12.75 5.25" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M5.25 5.25H12.75V12.75" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                           </svg>
+                        </a>   
+                     </div>
+                  </div>
+                  <div class="mb-50">
+                     <h3>Hosting Platform Information</h3>
+                     <div class="asset-body-links">
+                        <a href="#" class="btn btn-underline">
+                           <svg class="bookmark" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M14.25 15.75L9 12L3.75 15.75V3.75C3.75 3.35218 3.90804 2.97064 4.18934 2.68934C4.47064 2.40804 4.85218 2.25 5.25 2.25H12.75C13.1478 2.25 13.5294 2.40804 13.8107 2.68934C14.092 2.97064 14.25 3.35218 14.25 3.75V15.75Z" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                           </svg>
+                           Name
+                        </a>    
+                        <a href="#" class="btn btn-underline">
+                           <svg class="bookmark" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M14.25 15.75L9 12L3.75 15.75V3.75C3.75 3.35218 3.90804 2.97064 4.18934 2.68934C4.47064 2.40804 4.85218 2.25 5.25 2.25H12.75C13.1478 2.25 13.5294 2.40804 13.8107 2.68934C14.092 2.97064 14.25 3.35218 14.25 3.75V15.75Z" stroke="#FFED00" stroke-linecap="round" stroke-linejoin="round"/>
+                           </svg>
+                           Name
+                        </a>      
+                     </div>
+                  </div>
+                  <div class="asset-body-keywords mb-50">
+                     <div>
+                        <h3>Tags</h3>
+                        <form class="sidenav-filter-search">
+                           <mat-form-field class="">
+                              <mat-label>Search</mat-label>
+                              <input matInput type="search" formControlName="search" />
+                           </mat-form-field>
+                           
+                        </form>
+                        <mat-chip-listbox aria-label="Fish selection">
+                           <mat-chip *ngFor="let keyword of asset.keywords">{{keyword}}</mat-chip>
+                        </mat-chip-listbox>
+                     </div>
+         
+                     <div *ngIf="!!asset.research_area && asset.research_area.length>0">
+                        <h3>{{ 'ASSETS.ASSET-DETAIL.RESEARCH_AREA' | translate }}</h3>
+                        <mat-chip-listbox aria-label="Fish selection">
+                           <mat-chip *ngFor="let area of asset.research_area">{{ 'area' }}</mat-chip>
+                        </mat-chip-listbox>
+                     </div>
+         
+                     <div *ngIf="!!asset.scientific_domain && asset.scientific_domain.length>0">
+                        <h3>{{ 'ASSETS.ASSET-DETAIL.SCIENTIFIC_DOMAIN' | translate }}</h3>
+                        <mat-chip-listbox aria-label="Fish selection">
+                           <mat-chip *ngFor="let domain of asset.scientific_domain">{{ domain }}</mat-chip>
+                        </mat-chip-listbox>
+                     </div>
+                  </div>
+                  <div class="mb-50">
+                     <h3>Data Licensing Information</h3>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque fugit sint, officia reprehenderit dolores rem distinctio eum iste iure molestias nisi vitae, tempora animi! Perferendis harum vero libero tempora saepe?</p>
+                  </div>
+                  <div class="mb-50">
+                     <h3>API Access Information</h3>
+                     <p>Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat.</p>
+                     <p>Eget quis mi enim, leo lacinia pharetra, semper. Eget in volutpat mollis at volutpat lectus velit, sed auctor. Porttitor fames arcu quis fusce augue enim. Quis at habitant diam at. Suscipit tristique risus, at donec. In turpis vel et quam imperdiet. Ipsum molestie aliquet sodales id est ac volutpat.</p>
+                  </div>
+                  <div class="mb-50">
+                     <h3>Versioning</h3>
+                     <div class="asset-body-links asset-body-versions">
+                        <div class="btn btn-underline versions">
+                           Versioning 01
+                        </div>    
+                        <div class="btn btn-underline versions">
+                           Versioning 02
+                        </div>    
+                     </div>
+                  </div>
+                  <button class="btn btn-default" aria-label="Add stash" (click)="addItemCart()">
+                     Bookmark/Save 
+                     <span class="btn-default-icon">+</span>
+                  </button>
+               </div>
+            </mat-tab>
+            <mat-tab label="Discussion">
+               <div class="mb-50">
+                  <h3>Discussion</h3>
+                  <mat-accordion [ngClass]="{'accordion-expanded': expanded}">
+                     <button class="btn btn-underline accordion-button" (click)="accordion.closeAll(); expanded = false"> 
+                        <mat-icon>keyboard_arrow_left</mat-icon> Back
+                     </button>
+                     <mat-expansion-panel class="accordion" hideToggle [ngClass]="{'is-expanded': expanded}" (click)="expanded = true">
+                       <mat-expansion-panel-header>
+                           <mat-card class="asset-card asset-card--discussion" >
+                              <div>
+                                 <mat-card-header class="asset-card-header">
+                                    <mat-card-title>
+                                       <span>Name</span>
+                                    </mat-card-title>
+                                    <div class="asset-card-content">
+                                       <markdown>
+                                          1.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                                       </markdown>
+                                    </div>
+                                    <div class="asset-card-data">
+                                       <span>opened about 10 hours | ago by aosioas</span>
+                                    </div>
+                                    <div class="asset-card-info">
+                                       <div class="asset-card-info-content">
+                                          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <g opacity="0.6">
+                                             <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                             </g>
+                                          </svg>   
+                                          <span>1029</span>
+                                       </div>
+                                       <div class="asset-card-info-content">
+                                          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <g opacity="0.6">
+                                             <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                             </g>
+                                          </svg>
+                                          <span>1029</span>
+                                       </div>
+                                    </div>
+                                 </mat-card-header>
+                              </div>
+                           </mat-card>
+                        </mat-expansion-panel-header>
+                        <div class="discussion-message">
+                           <div class="user-info-avatar user-info-avatar--discussion" >
+                              <img alt="" class="login-avatar" src="../assets/images/avatar.png">
+                              <div>
+                                 <p>Name Surname</p>
+                                 <span>Position, Company name</span>
+                              </div>
+                           </div>
+                           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur velit illo reiciendis eos, sapiente ullam quos, vel exercitationem mollitia eveniet necessitatibus esse veniam. At esse possimus aut fugiat voluptate eum?</p>
+                           <div class="asset-card-info">
+                              <div class="asset-card-info-content">
+                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g opacity="0.6">
+                                    <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                 </svg>   
+                                 <span>1029</span>
+                              </div>
+                              <div class="asset-card-info-content">
+                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g opacity="0.6">
+                                    <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                 </svg>
+                                 <span>1029</span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="discussion-message">
+                           <div class="user-info-avatar user-info-avatar--discussion" >
+                              <img alt="" class="login-avatar" src="../assets/images/avatar.png">
+                              <div>
+                                 <p>Name Surname</p>
+                                 <span>Position, Company name</span>
+                              </div>
+                           </div>
+                           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur velit illo reiciendis eos, sapiente ullam quos, vel exercitationem mollitia eveniet necessitatibus esse veniam. At esse possimus aut fugiat voluptate eum?</p>
+                           <div class="asset-card-info">
+                              <div class="asset-card-info-content">
+                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g opacity="0.6">
+                                    <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                 </svg>   
+                                 <span>1029</span>
+                              </div>
+                              <div class="asset-card-info-content">
+                                 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g opacity="0.6">
+                                    <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                 </svg>
+                                 <span>1029</span>
+                              </div>
+                           </div>
+                        </div>
+                        <form class="sidenav-filter-search discussion-message-textarea">
+                           <mat-form-field class="">
+                              <mat-label>Write a message</mat-label>
+                              <textarea matInput name="" id="" cols="30" rows="6"></textarea>
+                           </mat-form-field>
+                           <button type="submit" class="btn btn-underline" >
+                              Submit
+                           </button>    
+                        </form>
+                     </mat-expansion-panel>
+                     <mat-expansion-panel class="accordion" hideToggle [ngClass]="{'is-expanded': expanded}" (click)="expanded = true">
+                        <mat-expansion-panel-header>
+                            <mat-card class="asset-card asset-card--discussion" >
+                               <div>
+                                  <mat-card-header class="asset-card-header">
+                                     <mat-card-title>
+                                        <span>Name</span>
+                                     </mat-card-title>
+                                     <div class="asset-card-content">
+                                        <markdown>
+                                           2.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                                        </markdown>
+                                     </div>
+                                     <div class="asset-card-data">
+                                        <span>opened about 10 hours | ago by aosioas</span>
+                                     </div>
+                                     <div class="asset-card-info">
+                                        <div class="asset-card-info-content">
+                                           <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <g opacity="0.6">
+                                              <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                              </g>
+                                           </svg>   
+                                           <span>1029</span>
+                                        </div>
+                                        <div class="asset-card-info-content">
+                                           <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <g opacity="0.6">
+                                              <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                              </g>
+                                           </svg>
+                                           <span>1029</span>
+                                        </div>
+                                     </div>
+                                  </mat-card-header>
+                               </div>
+                            </mat-card>
+                         </mat-expansion-panel-header>
+                         <div class="discussion-message">
+                            <div class="user-info-avatar user-info-avatar--discussion" >
+                               <img alt="" class="login-avatar" src="../assets/images/avatar.png">
+                               <div>
+                                  <p>Name Surname</p>
+                                  <span>Position, Company name</span>
+                               </div>
+                            </div>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur velit illo reiciendis eos, sapiente ullam quos, vel exercitationem mollitia eveniet necessitatibus esse veniam. At esse possimus aut fugiat voluptate eum?</p>
+                            <div class="asset-card-info">
+                               <div class="asset-card-info-content">
+                                  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <g opacity="0.6">
+                                     <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                     </g>
+                                  </svg>   
+                                  <span>1029</span>
+                               </div>
+                               <div class="asset-card-info-content">
+                                  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <g opacity="0.6">
+                                     <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                     </g>
+                                  </svg>
+                                  <span>1029</span>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="discussion-message">
+                            <div class="user-info-avatar user-info-avatar--discussion" >
+                               <img alt="" class="login-avatar" src="../assets/images/avatar.png">
+                               <div>
+                                  <p>Name Surname</p>
+                                  <span>Position, Company name</span>
+                               </div>
+                            </div>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur velit illo reiciendis eos, sapiente ullam quos, vel exercitationem mollitia eveniet necessitatibus esse veniam. At esse possimus aut fugiat voluptate eum?</p>
+                            <div class="asset-card-info">
+                               <div class="asset-card-info-content">
+                                  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <g opacity="0.6">
+                                     <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                     </g>
+                                  </svg>   
+                                  <span>1029</span>
+                               </div>
+                               <div class="asset-card-info-content">
+                                  <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <g opacity="0.6">
+                                     <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                     </g>
+                                  </svg>
+                                  <span>1029</span>
+                               </div>
+                            </div>
+                         </div>
+                         <form class="sidenav-filter-search discussion-message-textarea">
+                            <mat-form-field class="">
+                               <mat-label>Write a message</mat-label>
+                               <textarea matInput name="" id="" cols="30" rows="6"></textarea>
+                            </mat-form-field>
+                            <button type="submit" class="btn btn-underline" >
+                               Submit
+                            </button>    
+                         </form>
+                      </mat-expansion-panel>
+                  </mat-accordion>
+               </div>
+            </mat-tab>
+          </mat-tab-group>
+         
+      </div>
+      <div class="asset-body-right-column mt-100">
+         <h3>Related</h3>
+         <mat-card class="asset-card">
+            <div class="related-asset-card">
+               <div>
+                  <mat-card-actions class="asset-card-top">
+                     <mat-card-subtitle class="keywords-container">
+                        <mat-chip-listbox aria-label="Keywords">
+                           <mat-chip>Domain</mat-chip>
+                        </mat-chip-listbox>
+                     </mat-card-subtitle>
+                  </mat-card-actions>
+                  <mat-card-header class="asset-card-header">
+                     <mat-card-title>
+                        <span>Name</span>
+                     </mat-card-title>
+                     <div class="asset-card-content">
+                        <markdown>
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                        </markdown>
+                     </div>
+                  </mat-card-header>
+               </div>
+               <mat-card-content>
+                  <div class="asset-card-buttons">
+                     <button class="btn btn-underline" >
+                        View Details
+                     </button>    
+                     <div>
+                        <button 
+                           class="btn btn-underline"
+                           mat-icon-button 
+                           style="z-index: 99"
+                           >
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <g opacity="1">
+                              <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              </g>
+                           </svg>
+                              
+                        </button>
+                        <button 
+                        class="btn btn-underline"
+                        mat-icon-button 
+                        style="z-index: 99"
+                        >
+                        <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <g opacity="1">
+                           <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                           </g>
+                        </svg>   
+                           
+                     </button>
+                     </div>
+                  </div>
+                  
+               </mat-card-content>
             </div>
-        </div>
-
-        <div class="asset-body-keywords">
-            <div>
-                <h3>{{ 'ASSETS.ASSET-DETAIL.KEYWORDS' | translate }}</h3>
-                <mat-chip-listbox aria-label="Fish selection">
-                    <mat-chip *ngFor="let keyword of asset.keywords">{{'#'+ keyword }}</mat-chip>
-                </mat-chip-listbox>
+            <hr>  
+            <div class="related-asset-card">
+               <div>
+                  <mat-card-actions class="asset-card-top">
+                     <mat-card-subtitle class="keywords-container">
+                        <mat-chip-listbox aria-label="Keywords">
+                           <mat-chip>Domain</mat-chip>
+                        </mat-chip-listbox>
+                     </mat-card-subtitle>
+                  </mat-card-actions>
+                  <mat-card-header class="asset-card-header">
+                     <mat-card-title>
+                        <span>Name</span>
+                     </mat-card-title>
+                     <div class="asset-card-content">
+                        <markdown>
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                        </markdown>
+                     </div>
+                  </mat-card-header>
+               </div>
+               <mat-card-content>
+                  <div class="asset-card-buttons">
+                     <button class="btn btn-underline" >
+                        View Details
+                     </button>    
+                     <div>
+                        <button 
+                           class="btn btn-underline"
+                           mat-icon-button 
+                           style="z-index: 99"
+                           >
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <g opacity="1">
+                              <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              </g>
+                           </svg>
+                              
+                        </button>
+                        <button 
+                        class="btn btn-underline"
+                        mat-icon-button 
+                        style="z-index: 99"
+                        >
+                        <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <g opacity="1">
+                           <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                           </g>
+                        </svg>   
+                           
+                     </button>
+                     </div>
+                  </div>
+                  
+               </mat-card-content>
             </div>
-
-            <div *ngIf="!!asset.research_area && asset.research_area.length>0">
-                <h3>{{ 'ASSETS.ASSET-DETAIL.RESEARCH_AREA' | translate }}</h3>
-                <mat-chip-listbox aria-label="Fish selection">
-                    <mat-chip *ngFor="let area of asset.research_area">{{ 'area' }}</mat-chip>
-                </mat-chip-listbox>
+            <hr>  
+            <div class="related-asset-card">
+               <div>
+                  <mat-card-actions class="asset-card-top">
+                     <mat-card-subtitle class="keywords-container">
+                        <mat-chip-listbox aria-label="Keywords">
+                           <mat-chip>Domain</mat-chip>
+                        </mat-chip-listbox>
+                     </mat-card-subtitle>
+                  </mat-card-actions>
+                  <mat-card-header class="asset-card-header">
+                     <mat-card-title>
+                        <span>Name</span>
+                     </mat-card-title>
+                     <div class="asset-card-content">
+                        <markdown>
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                        </markdown>
+                     </div>
+                  </mat-card-header>
+               </div>
+               <mat-card-content>
+                  <div class="asset-card-buttons">
+                     <button class="btn btn-underline" >
+                        View Details
+                     </button>    
+                     <div>
+                        <button 
+                           class="btn btn-underline"
+                           mat-icon-button 
+                           style="z-index: 99"
+                           >
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <g opacity="1">
+                              <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              </g>
+                           </svg>
+                              
+                        </button>
+                        <button 
+                        class="btn btn-underline"
+                        mat-icon-button 
+                        style="z-index: 99"
+                        >
+                        <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <g opacity="1">
+                           <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                           </g>
+                        </svg>   
+                           
+                     </button>
+                     </div>
+                  </div>
+                  
+               </mat-card-content>
             </div>
-
-            <div *ngIf="!!asset.scientific_domain && asset.scientific_domain.length>0">
-                <h3>{{ 'ASSETS.ASSET-DETAIL.SCIENTIFIC_DOMAIN' | translate }}</h3>
-                <mat-chip-listbox aria-label="Fish selection">
-                    <mat-chip *ngFor="let domain of asset.scientific_domain">{{ domain }}</mat-chip>
-                </mat-chip-listbox>
+            <hr>  
+            <div class="related-asset-card">
+               <div>
+                  <mat-card-actions class="asset-card-top">
+                     <mat-card-subtitle class="keywords-container">
+                        <mat-chip-listbox aria-label="Keywords">
+                           <mat-chip>Domain</mat-chip>
+                        </mat-chip-listbox>
+                     </mat-card-subtitle>
+                  </mat-card-actions>
+                  <mat-card-header class="asset-card-header">
+                     <mat-card-title>
+                        <span>Name</span>
+                     </mat-card-title>
+                     <div class="asset-card-content">
+                        <markdown>
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                        </markdown>
+                     </div>
+                  </mat-card-header>
+               </div>
+               <mat-card-content>
+                  <div class="asset-card-buttons">
+                     <button class="btn btn-underline" >
+                        View Details
+                     </button>    
+                     <div>
+                        <button 
+                           class="btn btn-underline"
+                           mat-icon-button 
+                           style="z-index: 99"
+                           >
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <g opacity="1">
+                              <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                              </g>
+                           </svg>
+                              
+                        </button>
+                        <button 
+                        class="btn btn-underline"
+                        mat-icon-button 
+                        style="z-index: 99"
+                        >
+                        <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                           <g opacity="1">
+                           <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                           </g>
+                        </svg>   
+                           
+                     </button>
+                     </div>
+                  </div>
+                  
+               </mat-card-content>
             </div>
-        </div>
-    </div>
+         </mat-card>
+      </div>
+   </div>
 </ng-template>
+
+       
 
 <ng-template #assetTitle>
     <div class="asset-tittle">
         <div style="flex-grow: 3;">
-            <h1>{{ asset.name | titlecase }}</h1>
+            <div class="keywords-container">
+               <div *ngif="asset.version">
+                  <mat-chip class="chip mr-2" >{{ asset.version }} </mat-chip>
+               </div>
+               <div>
+                  <mat-chip class="chip mr-2" >{{ asset.category | lowercase}} </mat-chip>
+               </div>
+               <div *ngIf="asset.platform">
+                  <mat-chip class="chip mr-2">{{ asset.platform }} </mat-chip>
+               </div>
+            </div>
+            <h1 class="typewrite mt-4">{{ asset.name | titlecase }}</h1>
 
-            <div class="title-dates"> 
+            <!-- <div class="title-dates"> 
                 <span>
                     {{'ASSETS.ASSET-DETAIL.DATE_PUBLISHED' | translate }} : {{asset.date_published | date: 'mediumDate'}} 
                 </span> 
@@ -136,20 +744,15 @@
                 </span>
                 <br>
                 <span class="title-alternames" *ngFor="let name of asset.alternateName">{{ name }}</span>
+            </div> -->
+        </div>
+        <div class="user-info-avatar" >
+           <div>
+              <p>Name Surname</p>
+              <span>Position, Company name</span>
             </div>
-        </div>
-        <div *ngif="asset.version">
-            <p>{{ 'ASSETS.ASSET-DETAIL.VERSION' | translate }}</p>
-            <mat-chip class="chip" >{{ asset.version }} </mat-chip>
-        </div>
-        <div>
-            <p>{{ 'ASSETS.ASSET-DETAIL.CATEGORY' | translate }}</p>
-            <mat-chip class="chip" >{{ asset.category | lowercase}} </mat-chip>
-        </div>
-        <div *ngIf="asset.platform">
-            <p>{{ 'ASSETS.ASSET-DETAIL.PLATFORM' | translate }}</p>
-            <mat-chip class="chip">{{ asset.platform }} </mat-chip>
-        </div>
+            <img alt="" class="login-avatar" src="../assets/images/avatar.png">
+         </div>
     </div>
 </ng-template>
 

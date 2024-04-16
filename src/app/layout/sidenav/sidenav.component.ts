@@ -6,6 +6,8 @@ import {
     Component,
     OnInit,
     ViewChild,
+    Renderer2, 
+    ElementRef 
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -36,11 +38,15 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         private fb: FormBuilder,
         private router: Router,
         private filtersService: FiltersStateService,
+        private renderer: Renderer2, 
+        private elementRef: ElementRef,
     ) {
         this.mobileQuery = this.media.matchMedia('(max-width: 1366px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addEventListener('change', this._mobileQueryListener);
     }
+
+    public listShow = false;
 
     protected environment = environment;
 
@@ -111,6 +117,9 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         })
     }
 
+
+ 
+
     ngOnInit(): void {
         this.initializeForm();
         this.acknowledgments = this.appConfigService.acknowledgments;
@@ -166,6 +175,10 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         this.sidenavService.toggle();
     }
 
+    closeSidenav() {
+      this.sidenavService.close();
+  }
+
     searchAssets() {
         var query = this.searchFormGroup.get('search')?.value;
         this.filtersService.setSearchQuery(query);
@@ -178,4 +191,9 @@ export class SidenavComponent implements OnInit, AfterViewInit {
             this.filtersService.setSearchQuery('');
         }
     }
+    checkElementExistence(selector: string): boolean {
+      const element = this.elementRef.nativeElement.querySelector(selector);
+      return !element; // Convert to boolean
+    }
+   
 }

@@ -1,5 +1,5 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, HostListener, Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatMenuTrigger, _MatMenuBase } from '@angular/material/menu';
 import { AppConfigService } from '@app/core/services/app-config/app-config.service';
@@ -15,6 +15,39 @@ import { Router } from '@angular/router';
     styleUrls: ['./top-navbar.component.scss'],
 })
 export class TopNavbarComponent {
+   headerOpened = false;
+   isMobile: boolean = false;
+   isHeaderItemsVisible: boolean = true;
+
+   scrolled: boolean = false;
+
+   @HostListener("window:scroll", [])
+   onWindowScroll() {
+         this.scrolled = window.scrollY > 0;
+   }
+
+
+   ngOnInit(): void {
+      this.checkIfMobile();
+   }
+
+   toggleMenuMobile() {
+      if (this.isMobile) {
+          this.headerOpened = !this.headerOpened;
+          this.isHeaderItemsVisible = true;
+      }
+   }   
+   @HostListener('window:resize', ['$event'])
+   onResize(event: any): void {
+       this.checkIfMobile();
+   }
+
+   private checkIfMobile() {
+      this.isMobile = window.innerWidth < 991;
+      this.headerOpened = false;
+      this.isHeaderItemsVisible = !this.isMobile;
+   }   
+
     constructor(
         private readonly authService: AuthService,
         private ren: Renderer2,
@@ -33,6 +66,7 @@ export class TopNavbarComponent {
         });
         this.getCartItemCount();
     }
+    
     private _mobileQueryListener: () => void;
     protected environment = environment;
     mobileQuery: MediaQueryList;
@@ -144,3 +178,5 @@ export class TopNavbarComponent {
         this.router.navigate(['/shopping-cart']);
     }
 }
+
+

@@ -1,92 +1,186 @@
+<app-top-navbar #parentElement class="top-navbar" ></app-top-navbar>
 <mat-sidenav-container class="container mat-primary">
-    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches" class="sidenav"
-        [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
-        [fixedBottomGap]="options.value.bottom">
-        <div class="corner-ribbon red" *ngIf="environment.develop">Dev</div>
-        <div class="dashboard-logo-container">
+   <!-- <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches" class="sidenav"
+      [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+      [fixedBottomGap]="options.value.bottom">
+      <div class="corner-ribbon red" *ngIf="environment.develop">Dev</div>
+      <div class="dashboard-logo-container">
             <button *ngIf="mobileQuery.matches" mat-icon-button (click)="toggleSidenav()" style="z-index: 99">
-                <mat-icon>menu</mat-icon>
+               <mat-icon>menu</mat-icon>
             </button>
             <a routerLink="">
-                <img src="../../../assets/images/dashboard-logo.png" />
+               <img src="../../../assets/images/dashboard-logo.png" />
             </a>
-        </div>
+      </div>
 
-        <nav id="sidebarMenu" class="">
+      <nav id="sidebarMenu" class="">
             <mat-nav-list>
-                <ng-container *ngFor="let link of mainLinks">
-                    <mat-list-item *ngIf="
-                            !link.isRestricted ||
-                            (link.isRestricted && isLoggedIn())
+               <ng-container *ngFor="let link of mainLinks">
+                  <mat-list-item *ngIf="
+                           !link.isRestricted ||
+                           (link.isRestricted && isLoggedIn())
                         " class="sidenav-item" [disabled]="link.isDisabled">
                         <a mat-list-item [routerLink]="!link.isDisabled ? link.url : null" routerLinkActive="active"
-                            class="sidenav-link" [routerLinkActiveOptions]="
-                                link.url === '/'
+                           class="sidenav-link" [routerLinkActiveOptions]="
+                              link.url === '/'
                                     ? { exact: true }
                                     : { exact: false }
-                            ">{{ link.name | translate }}</a>
-                    </mat-list-item>
-                </ng-container>
-                <mat-list-item><a mat-list-item href="https://docs.google.com/forms/d/e/1FAIpQLSekGmIn525fK70wEs0WugxoqJScKzIF5S8T5jLRujv5FdIzeQ/viewform?embedded=true" target="_blank" class="sidenav-link">Contact</a></mat-list-item>
-                <mat-divider class="mt-3 mb-3"></mat-divider>
+                           ">{{ link.name | translate }}</a>
+                  </mat-list-item>
+               </ng-container>
+               <mat-list-item><a mat-list-item href="https://docs.google.com/forms/d/e/1FAIpQLSekGmIn525fK70wEs0WugxoqJScKzIF5S8T5jLRujv5FdIzeQ/viewform?embedded=true" target="_blank" class="sidenav-link">Contact</a></mat-list-item>
+               <mat-divider class="mt-3 mb-3"></mat-divider>
             </mat-nav-list>            
-        </nav>
-        <div *ngIf="isFiltersVisible">
+      </nav>
+      <div *ngIf="isFiltersVisible">
             <div class="filters" *ngIf="!isFilterLibraryVisible">
-                <mat-form-field>
-                    <mat-label>{{'SIDENAV.SELECT-PLATFORM' | translate}}</mat-label>
-                    <mat-select [(value)]="selectedPlatform" (selectionChange)="onSelectPlatformChange()">
+               <mat-form-field>
+                  <mat-label>{{'SIDENAV.SELECT-PLATFORM' | translate}}</mat-label>
+                  <mat-select [(value)]="selectedPlatform" (selectionChange)="onSelectPlatformChange()">
                         <mat-option>--</mat-option>
                         <mat-option *ngFor="let platform of platforms" [value]="platform.name">
-                            {{platform.name}}
+                           {{platform.name}}
                         </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                  </mat-select>
+               </mat-form-field>
             </div>
             <div class="filters">
-                <mat-radio-group aria-labelledby="radio-group-label" class="radio-group" [(ngModel)]="selectedCategory"
-                    (change)="onRadioTypeChange()">
-                    <mat-radio-button *ngIf="isFilterLibraryVisible" class="radio-button" [value]="'any'">{{
+               <mat-radio-group aria-labelledby="radio-group-label" class="radio-group" [(ngModel)]="selectedCategory"
+                  (change)="onRadioTypeChange()">
+                  <mat-radio-button *ngIf="isFilterLibraryVisible" class="radio-button" [value]="'any'">{{
                         'MY-LIBRARY.SIDENAV-FILTER' | translate }}</mat-radio-button>
-                    <mat-radio-button class="radio-button" *ngFor="let category of assetCategories" [value]="category">
+                  <mat-radio-button class="radio-button" *ngFor="let category of assetCategories" [value]="category">
                         {{category}}
-                    </mat-radio-button>
-                </mat-radio-group>
+                  </mat-radio-button>
+               </mat-radio-group>
             </div>
 
             <div class="filters" *ngIf="!isFilterLibraryVisible">
-                <form [formGroup]="searchFormGroup" class="example-form">
-                    <mat-form-field class="">
+               <form [formGroup]="searchFormGroup" class="example-form">
+                  <mat-form-field class="">
                         <mat-icon matPrefix>search</mat-icon>
                         <mat-label>Search assets</mat-label>
                         <input matInput type="search" formControlName="search" placeholder="Enter text to search" (input)="onInputChange()" />
-                    </mat-form-field>
-                    <div class="buttons-container">
+                  </mat-form-field>
+                  <div class="buttons-container">
                         <button mat-icon-button (click)="searchAssets()" style="z-index: 99">
-                            <mat-icon>search</mat-icon>
+                           <mat-icon>search</mat-icon>
                         </button>
-                    </div>
-                </form>
+                  </div>
+               </form>
             </div>
-        </div>
+      </div>
 
-        <div class="sidenav-footer mb-3 ml-3">
+      <div class="sidenav-footer mb-3 ml-3">
             <img src="../../../assets/images/eu-flag.jpg" width="50" class="mr-2" />
             <img src="../../../assets/images/dashboard-logo.png" width="100" class="mb-1" />
-            <!-- <p class="acknowledgments">
-                {{ acknowledgments }}
-                <a [href]="projectUrl">{{ projectName }}</a>
-            </p>
-            <a routerLink="conditions-of-use">{{
-                'SIDENAV.TERMS-OF-USE' | translate
-                }}</a>
-            <a routerLink="privacy-policy" class="ml-3">{{
-                'SIDENAV.PRIVACY-POLICY' | translate
-                }}</a> -->
-        </div>
-    </mat-sidenav>
-    <mat-sidenav-content class="pl-3 pr-3 sidenav-content">
-        <app-top-navbar class="top-navbar"></app-top-navbar>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+      </div>
+   </mat-sidenav> -->
+   <mat-sidenav-content [ngClass]="{'list-view': listShow, 'grid-view': !listShow}" class="sidenav-content" >
+      <div *ngIf="checkElementExistence('.asset-detail')">
+         <div class="banner-content">
+            <div class="banner">
+               <h1 class="typewrite">Platform</h1>
+               <p>Let’s start the assessment!</p>
+            </div>
+            <div class="grid-options">
+               <button (click)="listShow = false" mat-icon-button>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 3H3V10H10V3Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 3H14V10H21V3Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 14H14V21H21V14Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 14H3V21H10V14Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+               </button>
+               <button (click)="listShow = true" mat-icon-button>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M20 10L20 6L4 6L4 10L20 10Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                     <path d="M20 18L20 14L4 14L4 18L20 18Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </button>
+            </div>
+         </div>
+         <div class="filters filters-assets-list">
+            <mat-radio-group aria-labelledby="radio-group-label" class="radio-group" [(ngModel)]="selectedCategory"
+               (change)="onRadioTypeChange()">
+               <mat-radio-button *ngIf="isFilterLibraryVisible" class="radio-button filter-radio-button" [value]="'any'">{{
+                     'MY-LIBRARY.SIDENAV-FILTER' | translate }}</mat-radio-button>
+               <mat-radio-button class="radio-button filter-radio-button" *ngFor="let category of assetCategories" [value]="category">
+                     {{category}}
+                     <span>04</span>
+               </mat-radio-button>
+            </mat-radio-group>
+            <!-- Change this select to Sort by -->
+            <mat-form-field class="sidenav-filter-select">
+               <mat-label>Sort by</mat-label>
+               <mat-select>
+                  <mat-option>
+                     Option 1
+                  </mat-option>
+                  <mat-option>
+                     Option 2
+                  </mat-option>
+                  <mat-option>
+                     Option 3
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+      </div>
+      <router-outlet></router-outlet>
+   </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+<mat-sidenav #sidenav class="sidenav-filter">
+   <div *ngIf="isFiltersVisible">
+      <div class="filters" *ngIf="!isFilterLibraryVisible">
+         <form [formGroup]="searchFormGroup" class="sidenav-filter-search">
+            <mat-form-field class="">
+               <mat-label>Search</mat-label>
+               <input matInput type="search" formControlName="search" (input)="onInputChange()" />
+            </mat-form-field>
+            
+         </form>
+      </div>
+      <div class="filters" *ngIf="!isFilterLibraryVisible">
+            <mat-form-field class="sidenav-filter-select">
+               <mat-label>{{'SIDENAV.SELECT-PLATFORM' | translate}}</mat-label>
+               <mat-select [(value)]="selectedPlatform" (selectionChange)="onSelectPlatformChange()">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let platform of platforms" [value]="platform.name">
+                        {{platform.name}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+            <!-- Change this select to Type-->
+            <mat-form-field class="sidenav-filter-select">
+               <mat-label>Type</mat-label>
+               <mat-select [(value)]="selectedPlatform" (selectionChange)="onSelectPlatformChange()">
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let platform of platforms" [value]="platform.name">
+                        {{platform.name}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+      </div>
+      <mat-card-subtitle class="keywords-container">
+         <span class="keywords-label">Suggested Queries</span>
+         <mat-chip-listbox aria-label="Keywords">
+            <mat-chip>category</mat-chip>
+            <mat-chip>platform</mat-chip>
+         </mat-chip-listbox>
+      </mat-card-subtitle>
+      <div class="buttons-container">
+         <button (click)="searchAssets()" class="btn btn-default">
+               Apply
+               <span class="btn-default-icon">+</span>
+         </button>
+
+         <!-- Clean form - missing the function -->
+         <button (click)="closeSidenav()" class="btn btn-secondary">
+            Cancel
+         </button>
+      </div>
+   </div>
+</mat-sidenav> 

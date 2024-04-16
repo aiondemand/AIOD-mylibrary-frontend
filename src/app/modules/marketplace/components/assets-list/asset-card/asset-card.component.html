@@ -1,29 +1,109 @@
-<mat-card class="asset-card" routerLink="{{ asset.identifier }}" [queryParams]="{category: categoryKey}">
-    <mat-card-header class="asset-card-header">
-        <mat-card-title>
-            <mat-icon
-                matTooltip="{{asset.category}}"
-                color="primary"
-                >{{assetIcon}}</mat-icon
-            >
-            <span>{{ asset.name }}</span>
-        </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-divider></mat-divider>
-
-        <div class="asset-card-content">
-            <markdown>
-                {{ asset.description }}
-            </markdown>
-        </div>
-    </mat-card-content>
-    <mat-card-actions align="start">
-        <mat-card-subtitle class="mt-2 mb-2 keywords-container">
+<mat-card class="asset-card" >
+   <div>
+      <mat-card-actions class="asset-card-top">
+         <mat-card-subtitle class="keywords-container">
             <mat-chip-listbox aria-label="Keywords">
-                <mat-chip [style.background]="categoryColor">{{ asset.category | lowercase}}  </mat-chip>
-                <mat-chip *ngIf="asset.platform">{{ asset.platform }} </mat-chip>
+               <mat-chip>{{ asset.category | lowercase}} </mat-chip>
+               <mat-chip *ngIf="asset.platform">{{ asset.platform }} </mat-chip>
             </mat-chip-listbox>
-        </mat-card-subtitle>
-    </mat-card-actions>
+         </mat-card-subtitle>
+         <button class="btn btn-default">
+            My Library
+            <span class="btn-default-icon">+</span>
+         </button>
+      </mat-card-actions>
+      <mat-card-header class="asset-card-header">
+         <mat-card-title>
+            <!-- <mat-icon matTooltip="{{asset.category}}" color="primary">{{assetIcon}}</mat-icon> -->
+            <span>{{ asset.name }}</span>
+         </mat-card-title>
+         <div class="asset-card-content">
+            <markdown>
+               {{ asset.description }}
+            </markdown>
+         </div>
+         <div class="asset-card-data">
+            <span>Type of Data</span>
+            <span>Size of Data</span>
+         </div>
+
+         <div class="asset-card-info">
+            <div class="asset-card-info-content">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+               <span>1029</span>
+            </div>
+            <div class="asset-card-info-content">
+               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>   
+               <span>1029</span>
+            </div>
+            <div class="asset-card-info-content">
+               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M21.3333 11.5C21.3368 12.8199 21.0284 14.1219 20.4333 15.3C19.7278 16.7118 18.6431 17.8992 17.3008 18.7293C15.9585 19.5594 14.4116 19.9994 12.8333 20C11.5135 20.0035 10.2115 19.6951 9.03334 19.1L3.33334 21L5.23334 15.3C4.63827 14.1219 4.3299 12.8199 4.33334 11.5C4.33395 9.92179 4.77396 8.37488 5.60406 7.03258C6.43417 5.69028 7.6216 4.6056 9.03334 3.90003C10.2115 3.30496 11.5135 2.99659 12.8333 3.00003H13.3333C15.4177 3.11502 17.3864 3.99479 18.8625 5.47089C20.3386 6.94699 21.2184 8.91568 21.3333 11V11.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+               <span>1029</span>
+            </div>
+            <div class="asset-card-info-content">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.6">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+               <span>9500</span>
+            </div>
+         </div>
+      </mat-card-header>
+   </div>
+   <img class="asset-card-image" src="../assets/images/cards-image.jpeg" alt="">
+
+   <mat-card-content>
+      <div class="asset-card-buttons">
+         <button class="btn btn-underline" routerLink="{{ asset.identifier }}" [queryParams]="{category: categoryKey}" >
+            View Details
+         </button>    
+         <div>
+            <button 
+               class="btn btn-underline"
+               mat-icon-button 
+               style="z-index: 99"
+               >
+               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="1">
+                  <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M7 10L12 15L17 10" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 15V3" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+               </svg>
+                  
+            </button>
+            <button 
+            class="btn btn-underline"
+            mat-icon-button 
+            style="z-index: 99"
+            >
+            <svg viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <g opacity="1">
+               <path d="M21.5067 4.60999C20.9959 4.099 20.3895 3.69364 19.722 3.41708C19.0546 3.14052 18.3392 2.99817 17.6167 2.99817C16.8942 2.99817 16.1788 3.14052 15.5113 3.41708C14.8439 3.69364 14.2374 4.099 13.7267 4.60999L12.6667 5.66999L11.6067 4.60999C10.575 3.5783 9.17572 2.9987 7.71668 2.9987C6.25765 2.9987 4.85838 3.5783 3.82668 4.60999C2.79499 5.64169 2.21539 7.04096 2.21539 8.49999C2.21539 9.95903 2.79499 11.3583 3.82668 12.39L4.88668 13.45L12.6667 21.23L20.4467 13.45L21.5067 12.39C22.0177 11.8792 22.423 11.2728 22.6996 10.6053C22.9762 9.93789 23.1185 9.22248 23.1185 8.49999C23.1185 7.77751 22.9762 7.0621 22.6996 6.39464C22.423 5.72718 22.0177 5.12075 21.5067 4.60999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+               </g>
+            </svg>   
+               
+         </button>
+         </div>
+      </div>
+      
+   </mat-card-content>
+
+   
+
 </mat-card>

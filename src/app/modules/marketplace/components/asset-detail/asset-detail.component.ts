@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AppConfigService } from '@app/core/services/app-config/app-config.service';
 import { AssetCategory } from '@app/shared/models/asset-category.model';
@@ -7,6 +7,8 @@ import {  Subscription, switchMap } from 'rxjs';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ShoppingCartService } from '@app/shared/services/shopping-cart/shopping-cart.service';
 import { GeneralAssetService } from '../../services/assets-services/general-asset.service';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-asset-detail',
@@ -83,4 +85,6 @@ export class AssetDetailComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
   }
+  expanded: boolean = false;
+  @ViewChild(MatAccordion) accordion!: MatAccordion;
 }

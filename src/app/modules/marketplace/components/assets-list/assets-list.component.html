@@ -1,9 +1,10 @@
-<mat-toolbar class="mb-3 marketplace-toolbar">
+<!-- <mat-toolbar class="mb-3 marketplace-toolbar">
     <span>Assets Catalogue <mat-icon>library_books</mat-icon></span>
-</mat-toolbar>
+</mat-toolbar> -->
+
 
 <div *ngIf="isLoading; else assetList" class="spinner">
-    <mat-progress-spinner color="primary" mode="indeterminate">
+    <mat-progress-spinner mode="indeterminate">
     </mat-progress-spinner>
 </div>
 <mat-paginator (page)="handlePageEvent($event)" [length]="assetsSize" [pageSizeOptions]="pageSizeOptions" aria-label="Select page">
@@ -16,7 +17,7 @@
             *ngFor="
                 let asset of assets 
             "
-            class="m-2"
+            class=""
         >
             <app-asset-card [asset]="asset"></app-asset-card>
         </div>

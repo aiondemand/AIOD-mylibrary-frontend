@@ -1,8 +1,6 @@
 .top-navbar-container {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 0 0.5rem;
+    position: relative;
+    width: auto;
 }
 
 .spacer {
@@ -52,3 +50,1363 @@
     padding-top: 10px;
     cursor: pointer;
 }
+
+
+// Header
+
+.top-menu {
+   background-color: #06064f;
+   padding: 10px;
+   text-align: center;
+}
+
+.top-menu ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+.top-menu li {
+   display: inline-block;
+   margin-right: 10px;
+}
+
+.top-menu a {
+   text-decoration: none;
+   color: #fff;
+   /* White text color for menu items */
+   padding: 8px 16px;
+   border-radius: 4px;
+   background-color: #0047BB;
+   /* Electric blue button color */
+}
+
+
+.top-menu a:hover {
+   /* background-color: #1565c0; Dark blue hover background color */
+   color: #fff;
+   background-color: #41B6E6;
+   /* Darker hover background color */
+}
+
+
+.content {
+   background-color: #eaf2ff;
+   /* Light blue background color for the content area */
+   padding: 20px;
+}
+
+
+.logo-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px;
+}
+
+.logo {
+   max-width: 200px;
+   /* Adjust the value as needed */
+   max-height: 80px;
+   /* Adjust the value as needed */
+}
+
+.logo-left {
+   margin-right: 10px;
+}
+
+.logo-right {
+   margin-left: 10px;
+}
+
+.maintitle {
+   text-decoration: none;
+   color: inherit;
+}
+
+
+/* Header */
+
+
+/* line 9, assets/css/layout/_header.scss */
+header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   transition: transform 300ms ease-out;
+   background-color: transparent;
+   z-index: 102;
+}
+
+
+@media (max-width: 991px) {
+
+   /* line 9, assets/css/layout/_header.scss */
+   header {
+       height: 120px;
+       z-index: 999;
+       padding: 0;
+   }
+}
+
+/* line 30, assets/css/layout/_header.scss */
+header.hide-header {
+   display: none;
+}
+
+/* line 34, assets/css/layout/_header.scss */
+header.mobile-opened {
+   height: 100vh;
+   overflow: scroll;
+   z-index: 999;
+   background-color: #0047BB !important;
+   top: 0;
+}
+
+/* line 42, assets/css/layout/_header.scss */
+header.mobile-opened .header-items-icon.search-mobile {
+   display: none;
+}
+
+/* line 47, assets/css/layout/_header.scss */
+header.mobile-opened .header-nav {
+   min-height: 100vh;
+   height: 100%;
+   padding-bottom: 150px;
+}
+
+/* line 52, assets/css/layout/_header.scss */
+header.mobile-opened .header-nav #header-items {
+   opacity: 1;
+}
+
+/* line 60, assets/css/layout/_header.scss */
+header.mobile-opened #open-mobile-menu .hamburguer {
+   display: none;
+}
+
+/* line 64, assets/css/layout/_header.scss */
+header.mobile-opened #open-mobile-menu .hamburguer-close {
+   display: block;
+}
+
+/* line 70, assets/css/layout/_header.scss */
+header.mobile-opened .header-nav-logo .logotipo {
+   filter: brightness(0) invert(1);
+}
+
+/* line 77, assets/css/layout/_header.scss */
+header .header-line {
+   width: 60px;
+   height: 1px;
+   background-color: #6DD5FF;
+   margin: 0 30px;
+}
+
+/* line 84, assets/css/layout/_header.scss */
+header .header-nav {
+   padding: 20px 0;
+   width: 100%;
+   justify-content: flex-start;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+@media (max-width: 991px) {
+
+   /* line 84, assets/css/layout/_header.scss */
+   header .header-nav {
+       height: 120px;
+       display: block;
+       width: 100%;
+       padding: 0;
+       position: relative;
+   }
+}
+
+/* line 101, assets/css/layout/_header.scss */
+header .header-nav-logo {
+   transition: all 300ms ease-in-out;
+   position: relative;
+}
+
+@media (max-width: 991px) {
+
+   /* line 101, assets/css/layout/_header.scss */
+   header .header-nav-logo {
+       margin-left: 0;
+       height: 120px;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       width: 100%;
+       position: relative;
+   }
+}
+
+/* line 119, assets/css/layout/_header.scss */
+header .header-nav-logo .logotipo {
+   display: block;
+   width: 100%;
+   height: auto;
+}
+
+header .btn-default {
+   color: #FFED00;
+}
+
+header .btn-default:hover {
+   color: #0047BB;
+}
+
+header .btn-default:hover svg path {
+   stroke: #0047BB;
+}
+
+header .btn-default svg {
+   margin-left: 3px;
+}
+
+header .btn-default svg path {
+   transition: stroke 0.3s ease;
+}
+
+@media (max-width: 1199px) {
+
+   /* line 119, assets/css/layout/_header.scss */
+   header .header-nav-logo .logotipo {
+       max-width: 140px;
+   }
+}
+
+@media (max-width: 991px) {
+
+   /* line 119, assets/css/layout/_header.scss */
+   header .header-nav-logo .logotipo {
+       max-width: 130px;
+       display: inline;
+   }
+}
+
+/* line 134, assets/css/layout/_header.scss */
+header .header-nav-logo .logotipo,
+header .header-nav-logo .logotipo-grey {
+   max-width: 150px;
+}
+
+/* line 139, assets/css/layout/_header.scss */
+header .header-nav-logo .logotipo-cores {
+   display: none;
+   max-width: 180px;
+   width: 100%;
+   height: auto;
+}
+
+@media (max-width: 991px) {
+
+   /* line 139, assets/css/layout/_header.scss */
+   header .header-nav-logo .logotipo-cores {
+       max-width: 135px;
+   }
+}
+
+/* line 152, assets/css/layout/_header.scss */
+header .header-nav .main-menu {
+   list-style: none;
+   display: flex;
+   padding-left: 0;
+   align-items: flex-end;
+   margin: 0;
+   transition: margin 300ms ease-in-out;
+}
+
+@media (max-width: 991px) {
+
+   /* line 152, assets/css/layout/_header.scss */
+   header .header-nav .main-menu {
+       flex-direction: column;
+       align-items: flex-start;
+       margin: 0;
+   }
+}
+
+/* line 166, assets/css/layout/_header.scss */
+header .header-nav .main-menu .menu {
+   margin-right: 40px;
+   position: relative;
+}
+
+/* line 170, assets/css/layout/_header.scss */
+header .header-nav .main-menu .menu:before {
+   content: "";
+   position: absolute;
+   bottom: -30px;
+   height: 30px;
+   left: 0;
+   left: 0;
+   width: 100%;
+   background-color: transparent;
+}
+
+@media (max-width: 1199px) {
+
+   /* line 166, assets/css/layout/_header.scss */
+   header .header-nav .main-menu .menu {
+       margin-right: 5px;
+   }
+}
+
+@media (max-width: 991px) {
+
+   /* line 166, assets/css/layout/_header.scss */
+   header .header-nav .main-menu .menu {
+       margin-right: 0;
+       width: 100%;
+       padding: 0;
+       text-align: center;
+       margin: 30px 0;
+   }
+}
+
+/* line 193, assets/css/layout/_header.scss */
+header .header-nav .main-menu .menu.active .menu-link {
+   font-family: 'Jura', 'Helvetica Neue', sans-serif;
+   font-weight: 700;
+   color: #6DD5FF;
+   font-size: 16px;
+}
+
+
+/* line 203, assets/css/layout/_header.scss */
+header .header-nav .main-menu .menu .menu-link{
+   font-family: 'Jura', 'Helvetica Neue', sans-serif;
+   color: #FFFFFF;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 1;
+   text-decoration: none;
+   position: relative;
+   cursor: pointer;
+   overflow: hidden;
+   display: block;
+   transition: color 250ms ease;
+   overflow: visible;
+   padding: 15px 18px;
+   border-radius: 100px;
+   background-color: transparent;
+   transition: all 250ms ease;
+}
+header .mat-toolbar .mdc-button {
+   font-family: 'Jura', 'Helvetica Neue', sans-serif;
+   color: #FFFFFF;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 1;
+   text-decoration: none;
+   position: relative;
+   cursor: pointer;
+   overflow: hidden;
+   display: block;
+   transition: color 250ms ease;
+   overflow: visible;
+   padding: 15px 18px;
+   border-radius: 100px;
+   background-color: transparent;
+   transition: all 250ms ease;
+}
+header .header-nav .main-menu .menu .menu-link .menu-link-icon{
+   display: none;
+}
+header .mat-toolbar .mdc-button{
+   font-size: 13px;
+   font-weight: 600 !important;
+}
+
+header .mat-toolbar .mdc-button.buttons-container {
+   padding: 0;
+   min-width: unset;
+   margin-right: 15px;
+}
+
+
+
+@media (max-width: 991px) {
+
+   /* line 203, assets/css/layout/_header.scss */
+   header .header-nav .main-menu .menu .menu-link {
+       padding: 0 20px;
+       font-size: 20px;
+       line-height: 24px;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       width: 100%;
+   }
+   header .header-nav .main-menu .menu .menu-link .menu-link-icon{
+      display: block;
+   }
+}
+
+/* line 232, assets/css/layout/_header.scss */
+header .header-nav .main-menu .menu:last-of-type {
+   margin-right: 0px;
+}
+
+@media (min-width: 992px) {
+
+   /* line 237, assets/css/layout/_header.scss */
+   header .header-nav .main-menu .menu:hover .sub-menu {
+       visibility: visible;
+       opacity: 1;
+   }
+}
+
+
+
+
+@media (min-width: 992px) {
+
+   header .mat-toolbar .mdc-button:hover{
+      background-color: #FFED00;
+      color: #0047BB;
+   }
+
+   header .mat-toolbar{
+      padding: 0;
+   }
+
+   /* line 244, assets/css/layout/_header.scss */
+   header .header-nav .main-menu .menu:hover .menu-link,
+   header .header-nav .main-menu .menu .menu-link.active,
+   header .mat-toolbar .mdc-button{
+      position: relative;
+      background-color: #0047BB;
+      color: #FFED00;
+      height: auto;
+      display: flex !important;
+      align-items: center;
+   }
+
+   /* line 250, assets/css/layout/_header.scss */
+   header .header-nav .main-menu .menu:hover .menu-link:before,
+   header .header-nav .main-menu .menu .menu-link.active:before,
+   header .mat-toolbar .mdc-button:before {
+       content: "";
+       position: absolute;
+       inset: 0;
+       border-radius: 100px;
+       padding: 2px;
+       background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.125) 53.65%, rgba(255, 255, 255, 0) 100%);
+       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+       -webkit-mask-composite: xor;
+       mask-composite: exclude;
+   }
+}
+
+/* line 269, assets/css/layout/_header.scss */
+header .header-nav .single-link {
+   font-family: 'Jura', 'Helvetica Neue', sans-serif;
+   color: #f2f2f2;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 1;
+   display: flex;
+   height: 100%;
+   align-items: center;
+   margin-left: 4vw;
+   margin-right: 3vw;
+   transition: color 300ms ease;
+}
+
+@media screen and (max-width: 1500px) {
+
+   /* line 269, assets/css/layout/_header.scss */
+   header .header-nav .single-link {
+       font-size: 14px;
+   }
+}
+
+@media (max-width: 991px) {
+
+   /* line 269, assets/css/layout/_header.scss */
+   header .header-nav .single-link {
+       justify-content: center;
+       margin-top: 40px;
+   }
+}
+
+/* line 291, assets/css/layout/_header.scss */
+header .header-nav .single-link:hover {
+   color: #FFED00;
+}
+
+/* line 294, assets/css/layout/_header.scss */
+header .header-nav .single-link:hover i {
+   background-color: #FFED00;
+}
+
+/* line 299, assets/css/layout/_header.scss */
+header .header-nav .single-link i {
+   border-radius: 50%;
+   background-color: #f2f2f2;
+   width: 20px;
+   height: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   padding: 11px;
+   font-size: 12px;
+   margin-left: 5px;
+   transition: background-color 300ms ease;
+}
+
+/* line 315, assets/css/layout/_header.scss */
+header .header-nav .sub-menu {
+   visibility: hidden;
+   opacity: 0;
+   list-style: none;
+   padding-left: 0;
+   position: absolute;
+   transform: translateX(-50%);
+   left: 50%;
+   margin: 0;
+   margin-top: 30px;
+   background-color: #0047BB;
+   border-radius: 20px;
+   padding: 20px;
+   min-width: 160px;
+   width: -webkit-max-content;
+   width: -moz-max-content;
+   width: max-content;
+   z-index: 1;
+   transition: opacity 250ms ease, visibility 250ms ease;
+   display: flex;
+}
+
+@media (max-width: 991px) {
+
+   /* line 315, assets/css/layout/_header.scss */
+   header .header-nav .sub-menu {
+       flex-direction: column;
+       background-color: transparent;
+       padding: 0;
+       width: 100%;
+       margin-top: 10px;
+   }
+   header .mat-toolbar .mdc-button:not(.buttons-container){
+      position: relative;
+      background-color: #0047BB;
+      color: #FFED00;
+      height: auto;
+      display: flex !important;
+      align-items: center;
+      margin-top: 100px;
+   }
+   
+   header .mat-toolbar .mdc-button:not(.buttons-container):before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 100px;
+      padding: 2px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.125) 53.65%, rgba(255, 255, 255, 0) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+   }
+}
+
+@media (min-width: 992px) {
+
+   /* line 343, assets/css/layout/_header.scss */
+   header .header-nav .sub-menu:before {
+       content: "";
+       position: absolute;
+       inset: 0;
+       border-radius: 20px;
+       padding: 2px;
+       background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.125) 53.65%, rgba(255, 255, 255, 0) 100%);
+       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+       -webkit-mask-composite: xor;
+       mask-composite: exclude;
+   }
+}
+
+/* line 358, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li {
+   position: relative;
+   background-color: transparent;
+   border-radius: 10px;
+   margin-right: 8px;
+   transition: background-color 300ms ease;
+   max-width: 270px;
+}
+
+@media (max-width: 991px) {
+
+   /* line 358, assets/css/layout/_header.scss */
+   header .header-nav .sub-menu li {
+       max-width: 100%;
+       background-color: rgba(255, 255, 255, 0.1);
+       margin-right: 0;
+       margin-bottom: 10px;
+   }
+}
+
+/* line 373, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li:last-child {
+   margin-right: 0px;
+}
+
+/* line 377, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li:hover {
+   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* line 381, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li a {
+   padding: 20px;
+   display: block;
+   height: 100%;
+}
+
+@media (max-width: 991px) {
+
+   /* line 381, assets/css/layout/_header.scss */
+   header .header-nav .sub-menu li a {
+       text-align: left;
+   }
+}
+
+/* line 390, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li a p {
+   font-size: 14px;
+   line-height: 1.4;
+   color: rgba(255, 255, 255, 0.7);
+   font-weight: 600;
+   position: relative;
+   margin-bottom: 0;
+   transition: color 300ms ease;
+}
+
+@media (max-width: 991px) {
+
+   /* line 390, assets/css/layout/_header.scss */
+   header .header-nav .sub-menu li a p {
+       font-weight: 600;
+       color: rgba(255, 255, 255, 0.7);
+   }
+}
+
+/* line 405, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li a:hover {
+   text-decoration: none;
+}
+
+/* line 408, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li a:hover p {
+   color: #FFF;
+}
+
+/* line 412, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li a:hover span {
+   color: #FFED00;
+}
+
+@media (max-width: 991px) {
+
+   /* line 412, assets/css/layout/_header.scss */
+   header .header-nav .sub-menu li a:hover span {
+       color: #FFED00;
+   }
+}
+
+/* line 421, assets/css/layout/_header.scss */
+header .header-nav .sub-menu li a span {
+   display: block;
+   margin-bottom: 8px;
+   font-weight: 600;
+   color: #FFF;
+   font-size: 18px;
+}
+
+/* line 433, assets/css/layout/_header.scss */
+header .header-items-icon {
+   margin-right: 30px;
+   display: flex;
+   align-items: center;
+}
+
+/* line 438, assets/css/layout/_header.scss */
+header .header-items-icon.search-mobile {
+   display: none;
+}
+
+@media (max-width: 991px) {
+
+   /* line 438, assets/css/layout/_header.scss */
+   header .header-items-icon.search-mobile {
+       right: 25px;
+       position: relative;
+       display: flex;
+       align-items: center;
+   }
+}
+
+/* line 450, assets/css/layout/_header.scss */
+header .header-items-icon:hover i {
+   color: #f2f2f2;
+}
+
+/* line 455, assets/css/layout/_header.scss */
+header .header-items-icon:last-child {
+   margin-right: 0;
+}
+
+/* line 459, assets/css/layout/_header.scss */
+header .header-items-icon i {
+   font-size: 18px;
+   color: #6DD5FF;
+   transition: color 300ms ease;
+}
+
+/* line 466, assets/css/layout/_header.scss */
+header #header-items {
+   display: flex;
+}
+
+@media (max-width: 991px) {
+
+   /* line 466, assets/css/layout/_header.scss */
+   header #header-items {
+       flex-direction: column;
+   }
+}
+
+@media (min-width: 992px) {
+
+   /* line 466, assets/css/layout/_header.scss */
+   header #header-items {
+       padding: 0;
+   }
+}
+
+@media (max-width: 991px) {
+
+   /* line 466, assets/css/layout/_header.scss */
+   header #header-items {
+       opacity: 0;
+       visibility: hidden;
+       transition: opacity 250ms ease-out;
+   }
+}
+
+/* line 484, assets/css/layout/_header.scss */
+header #header-items .menu.selected .menu-link-mobile {
+   background-color: rgba(255, 255, 255, 0.1);
+   border-radius: 10px;
+   padding: 20px 0;
+}
+
+/* line 489, assets/css/layout/_header.scss */
+header #header-items .menu.selected .menu-link-mobile i {
+   transform: rotate(90deg);
+}
+
+/* line 494, assets/css/layout/_header.scss */
+header #header-items .menu.selected .sub-menu {
+   position: relative;
+   opacity: 1;
+   visibility: visible;
+}
+
+@media (max-width: 991px) {
+
+   /* line 502, assets/css/layout/_header.scss */
+   header #open-mobile-menu {
+       position: absolute;
+       right: 0;
+       top: 42%;
+       height: 16px;
+   }
+}
+
+/* line 514, assets/css/layout/_header.scss */
+.menu-link-mobile {
+   z-index: 2;
+   position: relative;
+}
+
+@media (max-width: 991px) {
+
+   /* line 514, assets/css/layout/_header.scss */
+   .menu-link-mobile {
+       display: flex;
+   }
+}
+
+/* line 522, assets/css/layout/_header.scss */
+.menu-link-mobile i {
+   color: #FFF;
+   font-size: 14px;
+   transition: transform 300ms ease;
+}
+
+/* line 528, assets/css/layout/_header.scss */
+.menu-link-mobile.has-submenu .menu-link {
+   pointer-events: none;
+}
+
+/* line 537, assets/css/layout/_header.scss */
+.hamburguer {
+   position: absolute;
+   right: 30px;
+   top: 18%;
+   cursor: pointer;
+   width: 25px;
+   height: 8px;
+}
+
+@media (max-width: 991px) {
+
+   /* line 537, assets/css/layout/_header.scss */
+   .hamburguer {
+       right: 5px;
+   }
+}
+
+/* line 549, assets/css/layout/_header.scss */
+.hamburguer span,
+.hamburguer span:after,
+.hamburguer span::before {
+   content: '';
+   cursor: pointer;
+   height: 2px;
+   width: 23px;
+   background-color: #D9D9D9;
+   position: absolute;
+   right: 0;
+   display: inline-block;
+   transition: all 250ms ease;
+}
+
+/* line 563, assets/css/layout/_header.scss */
+.hamburguer span:after {
+   bottom: -6px;
+   width: 23px;
+}
+
+/* line 568, assets/css/layout/_header.scss */
+.hamburguer span:before {
+   bottom: -12px;
+   width: 23px;
+}
+
+/* line 574, assets/css/layout/_header.scss */
+.hamburguer-close {
+   display: none;
+   position: absolute;
+   right: 30px;
+   top: -10%;
+   cursor: pointer;
+   width: 22px;
+   height: 22px;
+}
+
+@media (max-width: 991px) {
+
+   /* line 574, assets/css/layout/_header.scss */
+   .hamburguer-close {
+       right: 8px;
+   }
+}
+
+/* line 587, assets/css/layout/_header.scss */
+.hamburguer-close span,
+.hamburguer-close span:after {
+   content: '';
+   cursor: pointer;
+   height: 2px;
+   width: 100%;
+   background-color: #D9D9D9;
+   position: absolute;
+   top: 49%;
+   right: 0;
+   display: inline-block;
+}
+
+/* line 600, assets/css/layout/_header.scss */
+.hamburguer-close span {
+   transform: rotate(45deg);
+}
+
+/* line 604, assets/css/layout/_header.scss */
+.hamburguer-close span:after {
+   transform: rotate(-90deg);
+   top: 0px;
+}
+
+/* line 618, assets/css/layout/_header.scss */
+#header.appearence-changed,
+#header.header-colors.appearence-changed {
+   transform: translateY(-100%);
+}
+
+/* line 623, assets/css/layout/_header.scss */
+#header.appearence-changed .header-nav-logo .logotipo,
+#header.header-colors.appearence-changed .header-nav-logo .logotipo {
+   display: inline;
+}
+
+/* line 629, assets/css/layout/_header.scss */
+#header.appearence-changed .header-nav-logo .logotipo-cores,
+#header.header-colors.appearence-changed .header-nav-logo .logotipo-cores {
+   display: none;
+}
+
+@media (min-width: 992px) {
+
+   /* line 637, assets/css/layout/_header.scss */
+   #header.appearence-changed .main-menu .menu-link .icon-search,
+   #header.header-colors.appearence-changed .main-menu .menu-link .icon-search {
+       color: #6DD5FF;
+   }
+}
+
+/* line 651, assets/css/layout/_header.scss */
+#header.header-colors {
+   background-color: rgba(0, 48, 65, 0.98);
+   top: 0;
+   z-index: 10;
+}
+
+/* line 657, assets/css/layout/_header.scss */
+#header.header-colors .header-nav-logo .logotipo {
+   display: inline;
+}
+
+/* line 663, assets/css/layout/_header.scss */
+#header.header-colors .header-nav-logo .logotipo-cores {
+   display: none;
+}
+
+@media (min-width: 992px) {
+
+   /* line 669, assets/css/layout/_header.scss */
+   #header.header-colors .main-menu .menu-link {
+       color: #6DD5FF;
+   }
+}
+
+@media (min-width: 992px) {
+
+   /* line 674, assets/css/layout/_header.scss */
+   #header.header-colors .main-menu .menu-link .icon-search {
+       color: #6DD5FF;
+   }
+}
+
+@media (max-width: 991px) {
+
+   /* line 684, assets/css/layout/_header.scss */
+   #header.header-colors .hamburguer span,
+   #header.header-colors .hamburguer span:after {
+       background-color: #fff;
+   }
+}
+
+/*slider switch css */
+/* line 694, assets/css/layout/_header.scss */
+.theme-switch-wrapper {
+   display: flex;
+   align-items: center;
+   position: absolute;
+   right: 0;
+}
+
+@media (max-width: 991px) {
+
+   /* line 694, assets/css/layout/_header.scss */
+   .theme-switch-wrapper {
+       right: initial;
+       bottom: 50px;
+       left: 20px;
+   }
+}
+
+/* line 707, assets/css/layout/_header.scss */
+.theme-switch {
+   display: inline-block;
+   height: 44px;
+   position: relative;
+   width: 80px;
+}
+
+/* line 713, assets/css/layout/_header.scss */
+.theme-switch input {
+   display: none;
+}
+
+/* line 717, assets/css/layout/_header.scss */
+.theme-switch-icons {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: row;
+   align-items: center;
+   padding: 11px;
+   z-index: 111;
+   position: relative;
+}
+
+/* line 730, assets/css/layout/_header.scss */
+.slider {
+   background-color: transparent;
+   border: 2px solid rgba(255, 255, 255, 0.3);
+   bottom: 0;
+   cursor: pointer;
+   left: 0;
+   position: absolute;
+   right: 0;
+   top: 0;
+   transition: .4s;
+}
+
+@media (max-width: 991px) {
+
+   /* line 730, assets/css/layout/_header.scss */
+   .slider {
+       border: 2px solid rgba(0, 0, 0, 0.3);
+   }
+}
+
+/* line 745, assets/css/layout/_header.scss */
+.slider:before {
+   background-color: #0047BB;
+   bottom: 5px;
+   content: "";
+   height: 30px;
+   left: 6px;
+   position: absolute;
+   transition: transform 300ms ease, opacity 300ms ease 300ms;
+   width: 30px;
+   opacity: 0;
+}
+
+@media (max-width: 991px) {
+
+   /* line 745, assets/css/layout/_header.scss */
+   .slider:before {
+       background-color: #6DD5FF;
+   }
+}
+
+/* line 763, assets/css/layout/_header.scss */
+input:checked + .slider:before {
+   transform: translateX(34px);
+}
+
+@media (max-width: 991px) {
+
+   /* line 770, assets/css/layout/_header.scss */
+   .theme-switch-icons svg path {
+       stroke: #000000;
+       stroke-opacity: 0.7;
+   }
+}
+
+/* line 781, assets/css/layout/_header.scss */
+[data-theme="dark"] .theme-switch-icons .dark-icon path {
+   stroke-opacity: 1;
+}
+
+/* line 786, assets/css/layout/_header.scss */
+[data-theme="dark"] .slider:before {
+   opacity: 1;
+}
+
+/* line 792, assets/css/layout/_header.scss */
+.slider.round {
+   border-radius: 100px;
+}
+
+/* line 795, assets/css/layout/_header.scss */
+.slider.round:before {
+   border-radius: 50%;
+}
+
+
+
+
+/* Barra cookies */
+/* line 3, assets/css/base/_cookies.scss */
+.in-modal .cookies-wrapper {
+   overflow: auto;
+}
+
+/* line 7, assets/css/base/_cookies.scss */
+.cookies-wrapper {
+   display: none;
+   padding: 30px;
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   z-index: 99999;
+   background-color: rgba(0, 0, 0, 0.6);
+   font-size: 12px;
+}
+
+/* line 19, assets/css/base/_cookies.scss */
+.cookies-wrapper * {
+   box-sizing: border-box;
+}
+
+/* line 23, assets/css/base/_cookies.scss */
+.cookies-wrapper button {
+   margin-bottom: 10px;
+}
+
+@media (max-width: 575px) {
+
+   /* line 23, assets/css/base/_cookies.scss */
+   .cookies-wrapper button {
+       display: block;
+       width: 100%;
+   }
+}
+
+/* line 33, assets/css/base/_cookies.scss */
+.cookies-box {
+   max-width: 600px;
+   padding: 35px;
+   position: absolute;
+   bottom: 30px;
+   left: 50%;
+   transform: translateX(-50%);
+   margin: 0 auto;
+   border-radius: 20px;
+   background-color: white;
+}
+
+@media (max-width: 991px) {
+
+   /* line 33, assets/css/base/_cookies.scss */
+   .cookies-box {
+       width: 85%;
+       padding: 30px 20px;
+   }
+}
+
+/* line 50, assets/css/base/_cookies.scss */
+.cookies__title {
+   display: block;
+   width: 100%;
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 22px;
+   line-height: 28px;
+   color: #0047BB;
+}
+
+/* line 60, assets/css/base/_cookies.scss */
+.cookies-bar-message {
+   display: block;
+   float: left;
+   margin-bottom: 30px;
+   color: #000613;
+   font-size: 14px;
+   line-height: 1.4;
+}
+
+/* line 69, assets/css/base/_cookies.scss */
+.cookies-bar-message p:last-child {
+   margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+
+   /* line 75, assets/css/base/_cookies.scss */
+   .cookies-settings-link {
+       text-align: right;
+   }
+}
+
+/* line 81, assets/css/base/_cookies.scss */
+.cookies-settings {
+   display: none;
+}
+
+@media (min-width: 576px) {
+
+   /* line 85, assets/css/base/_cookies.scss */
+   .cookies-settings-cancel {
+       text-align: right;
+   }
+}
+
+/* line 91, assets/css/base/_cookies.scss */
+.cookie-info {
+   display: block;
+   padding-left: 30px;
+   line-height: 16px;
+}
+
+/* line 96, assets/css/base/_cookies.scss */
+.cookie-info p {
+   font-size: 80%;
+}
+
+/* line 98, assets/css/base/_cookies.scss */
+.cookie-info p:last-child {
+   margin-bottom: 0;
+}
+
+/* line 104, assets/css/base/_cookies.scss */
+.cookies-policy-link {
+   padding: 0 15px;
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   border-radius: 0 0 4px 4px;
+   background-color: #eee;
+   text-align: center;
+}
+
+@media (min-width: 576px) {
+
+   /* line 104, assets/css/base/_cookies.scss */
+   .cookies-policy-link {
+       padding: 0 45px;
+   }
+}
+
+/* line 119, assets/css/base/_cookies.scss */
+.cookies-bar-know-more {
+   color: #9a9a9a;
+   font-size: 0.85em;
+   line-height: 30px;
+   transition: color 0.2s ease;
+}
+
+/* line 125, assets/css/base/_cookies.scss */
+.cookies-bar-know-more:hover {
+   color: white;
+}
+
+/* line 131, assets/css/base/_cookies.scss */
+.cookies-message p {
+   display: none;
+}
+
+/* line 135, assets/css/base/_cookies.scss */
+.cookies-message b {
+   display: block;
+   margin-bottom: 10px;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.login-mobile {
+   display: none;
+}
+
+.login-desktop {
+   display: block;
+}
+
+.footer .border-container {
+   margin: 0 50px;
+   padding: 30px 50px;
+   border-radius: 30px;
+   border: 1px solid rgba(255, 255, 255, 0.50);
+   height: 100%;
+}
+
+
+.footer .border-container h3 {
+   color: #FFED00;
+   font-size: 38px;
+   font-style: normal;
+   font-weight: 300;
+   line-height: 1;
+   text-transform: uppercase;
+   margin-bottom: 30px;
+}
+
+
+@media (max-width: 991px) {
+
+   .login-mobile {
+       display: block;
+       right: initial;
+       bottom: 50px;
+       left: 20px;
+       position: absolute;
+   }
+
+   .login-desktop {
+       display: none;
+   }
+
+
+   /* line 144, assets/css/base/_cookies.scss */
+   .cookies-bar-message {
+       height: auto;
+   }
+
+   /* line 148, assets/css/base/_cookies.scss */
+   .cookies-bar-know-more {
+       padding-left: 0;
+   }
+
+   .menu-footer {
+       flex-direction: column !important;
+       align-items: flex-start !important;
+       margin-top: 50px !important;
+   }
+
+   .links-footer {
+       margin-top: 50px;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+   }
+
+   .footer .border-container {
+       margin: 50px 0 0 0;
+       height: auto;
+   }
+}
+
+
+.user-info{
+  display: flex;
+}
+
+.user-info-avatar{
+  display: flex;
+  align-items: center;
+  margin-right: 25px;
+ 
+}
+.user-info-avatar img{
+  width: 44px;
+  height: 44px;
+}
+
+.user-info-avatar p{
+  font-size: 15px;
+  color: #FFF;
+  margin-left: 18px;
+  width: 100%;
+  margin-bottom: 0;
+  padding-right: 25px;
+  border-right: 1px solid rgb(217, 217, 217, 0.2);
+}
+

@@ -146,4 +146,5 @@ export class AssetsListComponent implements OnInit, OnDestroy {
 	ngOnDestroy(): void {
 		this.subscriptions.unsubscribe();
 	}
+
 }
