@@ -19,7 +19,8 @@
 }
 
 ::ng-deep .sidenav .mat-drawer-inner-container {
-    /* overflow: hidden !important; */
+    display: flex;
+    flex-direction: column;
     overflow-y: auto; overflow-x: hidden;
 }
 
@@ -69,7 +70,8 @@
 }
 
 .sidenav-footer {
-    /* position: absolute; */
+    margin-top: auto;
+    align-self: center;
     bottom: 1rem;
 }
 
